@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    {% load staticfiles %}
+    <script src="{% static 'js/billboard.js' %}"></script>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="bbtitle">
+    BILLBOARD
+</div>
+
+<div class="fullBoard">
+    {% for m in messages %}
+        <div class="box">
+            <div class="time">
+                {{ m.published_time }}
+            </div>
+
+            <div class="msgtitle">
+                {{ m.title }}<br/>
+            </div>
+
+            <div class="msg">
+                {{ m.content }}
+            </div>
+
+            <div class="author">
+                {{ m.author }}
+            </div>
+        </div>
+    {%  empty  %}
+        {#hidden when there are messages #}
+        <div class="noMsg">
+            No messages... <br>
+            Click the '+' button to add a new message
+        </div>
+    {% endfor %}
+</div>
+
+
+<div class="addMsgBox">
+    <button class="plusBtn" id="addMsg">
+        +
+    </button>
+</div>
+
+
+<div class="postBox" >
+    <form method="POST" action="/post/create_message">
+        {% csrf_token %}
+
+        <div class="time3">
+            {{ time_now }}
+        </div>
+
+        <div>
+            <input class="postTitle" type="text" placeholder="Title" name="title" required>
+        </div>
+
+        <textarea class="postMsg" rows="6" cols="105" placeholder="Enter your message here" name="content"></textarea>
+
+        <div class="postAuthor">
+            <input type="text" placeholder="Author" name="author" required>
+        </div>
+
+
+        <div class="submitPostBox">
+            <button class="xBtn" type="button">
+                X
+            </button>
+            <button class="vBtn" type="submit">
+                ✔
+            </button>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+</body>
+</html>
