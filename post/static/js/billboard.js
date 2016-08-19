@@ -3,6 +3,7 @@ var Billboard = {};
 
 Billboard.init = function(){
   $(document).ready(function(){
+      $(".postBox").hide();
         $("#addMsg").click(function () {
              $(".postBox").css('display', 'inline-block')
         });
