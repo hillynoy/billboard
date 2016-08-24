@@ -1,5 +1,7 @@
 # Heroku Django Billboard app
 
+Django -- SQLite -- Python -- HTML -- Javascript -- CSS
+
 *This app is available on Heroku- https://secret-earth-58818.herokuapp.com/post/
 
 This app enables you to post messages to the billboard and to see other's. 
